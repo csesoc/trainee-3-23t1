@@ -1,0 +1,12 @@
+# env
+.env
+.env.example
+
+# node_modules
+node_modules/
+
+# .next
+.next/
+
+# migrations
+prisma/migrations/
