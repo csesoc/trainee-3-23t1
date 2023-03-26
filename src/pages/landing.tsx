@@ -6,7 +6,7 @@ const Landing: NextPage = () => {
   return (
     <Layout>
       <div className="w-full">
-        <nav className="flex flex-row justify-between bg-transparent bg-opacity-80 pb-2 pr-8 backdrop-blur-md">
+        <nav className="sticky top-0 flex flex-row justify-between bg-transparent bg-opacity-80 py-4 pr-8 backdrop-blur-md">
           <h1 className="pl-8 font-normal text-text">
             Academic<span className="text-accent-1">Misconduct</span>
           </h1>
