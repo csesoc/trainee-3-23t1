@@ -7,7 +7,7 @@ const Sidebar = () => {
     <nav className="max-w-24 flex h-screen flex-col items-center justify-between shadow-default">
       <div>
         <Link
-          href="/"
+          href="/landing"
           className="mx-auto my-8 flex h-12 w-12 items-center justify-center rounded-lg bg-accent-1 fill-background"
         >
           <svg

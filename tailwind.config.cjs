@@ -6,9 +6,11 @@ const config = {
     colors: {
       background: "#FFFFFF",
       "accent-1": "#FF5252",
+      "light-accent-1": "hsl(0, 100%, 66%, 0.6)",
       "accent-2": "#F45420",
       secondary: "#EAEAEA",
       text: "#121212",
+      transparent: "hsl(0, 0%, 0%, 0.0)",
     },
     fontFamily: {
       poppins: ["Poppins", "sans-serif"],
