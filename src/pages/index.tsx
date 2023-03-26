@@ -7,7 +7,7 @@ const Home: NextPage = () => {
   const path = useRouter().route;
   return (
     <Layout>
-      <h1>{path}</h1>
+      <h1>Home</h1>
     </Layout>
   );
 };
