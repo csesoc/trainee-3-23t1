@@ -1,15 +1,12 @@
-"use client";
-
 import { type NextPage } from "next";
 import { useRouter } from "next/router";
 import Layout from "~/components/Layout";
-const Home: NextPage = () => {
-  const path = useRouter().route;
+const Profile: NextPage = () => {
   return (
     <Layout>
-      <h1>Home</h1>
+      <h1>Profile</h1>
     </Layout>
   );
 };
 
-export default Home;
+export default Profile;
