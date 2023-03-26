@@ -3,6 +3,14 @@
 const config = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    screens: {
+      xs: "320px",
+      sm: "480px",
+      md: "768px",
+      lg: "976px",
+      xl: "1440px",
+      xxl: "2160px",
+    },
     colors: {
       background: "#FFFFFF",
       "accent-1": "#FF5252",

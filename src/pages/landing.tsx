@@ -1,6 +1,7 @@
 "use client";
-
+import pic from "~/../assets/question_marks.png";
 import { type NextPage } from "next";
+import Image from "next/image";
 import Layout from "~/components/Layout";
 const Landing: NextPage = () => {
   return (
@@ -11,7 +12,7 @@ const Landing: NextPage = () => {
             Academic<span className="text-accent-1">Misconduct</span>
           </h1>
 
-          <div className="flex flex-row space-x-4">
+          <div className="hidden flex-row space-x-4 lg:flex">
             <button className="rounded-2xl bg-accent-1 py-2 px-8 text-secondary hover:border-2 hover:border-accent-1 hover:bg-transparent hover:text-accent-1">
               Sign up
             </button>
@@ -21,18 +22,28 @@ const Landing: NextPage = () => {
           </div>
         </nav>
         <section className="mx-16 flex h-screen flex-col justify-center">
-          <p className="z-30 px-4 text-2xl font-normal text-text">
-            By Students for Students
-          </p>
-          <h1 className="z-30 text-8xl font-normal text-text">Academic</h1>
-          <h1 className="z-30 mb-8 text-8xl font-normal text-accent-1">
-            Misconduct
-          </h1>
-          <button className="z-30 w-32 rounded-2xl bg-accent-1 py-2 px-8 text-background">
-            Sign up
-          </button>
-          <div className="absolute z-0 translate-x-[32rem] whitespace-normal bg-gradient-to-bl from-light-accent-1 to-transparent bg-clip-text text-[32rem] font-black text-transparent">
-            ????
+          <div className="mx-auto">
+            <div className="flex flex-col lg:flex-row">
+              <div>
+                <p className="z-30 text-lg font-normal text-text lg:px-4 lg:text-2xl">
+                  By Students for Students
+                </p>
+                <h1 className="z-30 text-4xl font-normal text-text lg:text-8xl">
+                  Academic
+                </h1>
+                <h1 className="z-30 mb-8 text-4xl font-normal text-accent-1 lg:text-8xl">
+                  Misconduct
+                </h1>
+                <button className="z-30 w-32 rounded-2xl bg-accent-1 py-2 px-8 text-background">
+                  Sign up
+                </button>
+              </div>
+              <Image
+                src={pic}
+                className="h-full w-full object-cover lg:w-3/6 lg:max-w-lg lg:-translate-y-16"
+                alt="?"
+              />
+            </div>
           </div>
         </section>
       </div>
