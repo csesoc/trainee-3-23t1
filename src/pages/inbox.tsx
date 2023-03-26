@@ -1,9 +1,7 @@
-"use client";
-
 import { type NextPage } from "next";
 import { useRouter } from "next/router";
 import Layout from "~/components/Layout";
-const Home: NextPage = () => {
+const Inbox: NextPage = () => {
   const path = useRouter().route;
   return (
     <Layout>
@@ -12,4 +10,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Inbox;
