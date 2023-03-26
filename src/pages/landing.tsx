@@ -12,10 +12,10 @@ const Landing: NextPage = () => {
           </h1>
 
           <div className="flex flex-row space-x-4">
-            <button className="rounded-2xl bg-accent-1 py-2 px-8 text-secondary">
+            <button className="rounded-2xl bg-accent-1 py-2 px-8 text-secondary hover:border-2 hover:border-accent-1 hover:bg-transparent hover:text-accent-1">
               Sign up
             </button>
-            <button className="rounded-2xl border-2 py-2 px-8 text-accent-1">
+            <button className="rounded-2xl border-2 py-2 px-8 text-accent-1 hover:border-accent-1 hover:bg-accent-1 hover:text-background">
               Login
             </button>
           </div>
