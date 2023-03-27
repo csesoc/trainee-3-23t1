@@ -10,3 +10,5 @@ node_modules/
 
 # migrations
 prisma/migrations/
+
+.DS_Store
