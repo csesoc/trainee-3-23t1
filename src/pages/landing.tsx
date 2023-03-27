@@ -3,7 +3,15 @@ import pic from "~/../assets/question_marks.png";
 import { type NextPage } from "next";
 import Image from "next/image";
 import Layout from "~/components/Layout";
+import { useState } from "react";
 const Landing: NextPage = () => {
+  const FAQStateInit = [false, false, false];
+  const [FaqState, setFaqState] = useState([...FAQStateInit]);
+  const handleFAQClick = (key: number) => {
+    const tempFaqState = FAQStateInit;
+    tempFaqState[key] = !FaqState[key];
+    setFaqState(tempFaqState);
+  };
   return (
     <Layout>
       <div className="w-full">
@@ -149,6 +157,54 @@ const Landing: NextPage = () => {
                 </h4>
                 <p>Eoin, 2069</p>
               </div>
+            </div>
+          </div>
+        </section>
+        <section className="mx-16 flex h-screen flex-col justify-center">
+          <div className="mx-auto w-full space-y-8 text-center">
+            <h1>Frequently Asked Questions</h1>
+            <div className="flex flex-col space-y-8 lg:px-32">
+              {[...Array(3)].map((faq, key) => {
+                console.log(FaqState[key]);
+                return FaqState[key] === false ? (
+                  <button
+                    key={key}
+                    className="flex h-fit flex-row justify-between rounded-lg border-2 p-4 shadow-default"
+                    onClick={() => handleFAQClick(key)}
+                  >
+                    <h4 className="font-thin">Is this Legal?</h4>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="32"
+                      viewBox="0 96 960 960"
+                      width="32"
+                    >
+                      <path d="M450 856V606H200v-60h250V296h60v250h250v60H510v250h-60Z" />
+                    </svg>
+                  </button>
+                ) : (
+                  <button
+                    key={key}
+                    className="flex h-fit flex-col space-y-4 rounded-lg border-2 border-accent-1 p-4 text-accent-1 shadow-default"
+                    onClick={() => handleFAQClick(key)}
+                  >
+                    <div className="flex w-full flex-row justify-between fill-accent-1">
+                      <h4 className="font-thin">Is this Legal?</h4>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="32"
+                        viewBox="0 96 960 960"
+                        width="32"
+                      >
+                        <path d="M200 606v-60h560v60H200Z" />
+                      </svg>
+                    </div>
+                    <p>
+                      Absolutely, It is perfectly legal until you are caught
+                    </p>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </section>
