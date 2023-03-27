@@ -1,5 +1,6 @@
 "use client";
-import pic from "~/../assets/question_marks.png";
+import question_pic from "~/../assets/question_marks.png";
+import fire_pic from "~/../assets/fire.gif";
 import { type NextPage } from "next";
 import Image from "next/image";
 import Layout from "~/components/Layout";
@@ -14,7 +15,7 @@ const Landing: NextPage = () => {
   };
   return (
     <Layout>
-      <div className="w-full">
+      <div className="h-full w-full">
         <nav className="sticky top-0 flex flex-row justify-between bg-transparent bg-opacity-80 py-4 pr-8 backdrop-blur-md">
           <h1 className="pl-8 font-normal text-text">
             Academic<span className="text-accent-1">Misconduct</span>
@@ -47,7 +48,7 @@ const Landing: NextPage = () => {
                 </button>
               </div>
               <Image
-                src={pic}
+                src={question_pic}
                 className="-z-50 h-full  w-full object-cover lg:w-3/6 lg:max-w-lg lg:-translate-y-16"
                 alt="?"
               />
@@ -208,6 +209,37 @@ const Landing: NextPage = () => {
             </div>
           </div>
         </section>
+        <section className="mx-16 flex h-screen flex-col justify-center">
+          <div className="h-full w-full space-y-8 text-center align-middle">
+            <div className="inline-block h-3/5 w-4/5 rounded-2xl bg-accent-1">
+              <Image
+                className="h-full w-full rounded-2xl object-cover opacity-30"
+                src={fire_pic}
+                alt="fire"
+              />
+            </div>
+            <div className="space-y-8">
+              <h1>Our Sponsors</h1>
+              <div className="grid grid-cols-5 grid-rows-1">
+                <div>Hello</div>
+                <div>Hello</div>
+                <div>Hello</div>
+                <div>Hello</div>
+                <div>Hello</div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <footer className="flex h-fit flex-row justify-between bg-text p-4 text-background">
+          <p>Copyright © CSESoc Trainee 3 23T1</p>
+          <div className="space-x-4">
+            <button>Hi</button>
+            <button>Hi</button>
+            <button>Hi</button>
+            <button>Hi</button>
+            <button>Hi</button>
+          </div>
+        </footer>
       </div>
     </Layout>
   );
