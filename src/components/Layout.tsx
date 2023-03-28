@@ -9,7 +9,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <main className="flex h-screen w-full flex-row overflow-y-hidden overflow-x-clip">
       <Sidebar />
-      <section className="h-full w-full overflow-x-clip overflow-y-scroll">
+      <section className="w-full overflow-x-clip overflow-y-scroll">
         {children}
       </section>
     </main>

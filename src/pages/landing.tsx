@@ -21,7 +21,7 @@ const Landing: NextPage = () => {
   return (
     <Layout>
       <div className="h-full w-full">
-        <nav className="sticky top-0 z-50 flex flex-row justify-between bg-transparent bg-opacity-80 py-4 pr-8 backdrop-blur-md">
+        <nav className="top-0 z-50 flex w-full flex-row justify-between bg-transparent bg-opacity-80 py-4 pr-8 backdrop-blur-md">
           <h1 className="pl-8 font-normal text-text">
             Academic<span className="text-accent-1">Misconduct</span>
           </h1>
@@ -118,7 +118,6 @@ const Landing: NextPage = () => {
             <h1>Frequently Asked Questions</h1>
             <div className="flex flex-col space-y-8 lg:px-32">
               {[...Array(3)].map((faq, key) => {
-                console.log(FaqState[key]);
                 return FaqState[key] === false ? (
                   <button
                     key={key}
