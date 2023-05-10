@@ -10,9 +10,12 @@ import { type NextPage } from "next";
 import Image from "next/image";
 import Layout from "~/components/Layout";
 import { useState } from "react";
+import Link from "next/link";
 const Landing: NextPage = () => {
   const FAQStateInit = [false, false, false];
+  // TODO: move FAQ to separate component
   const [FaqState, setFaqState] = useState([...FAQStateInit]);
+  // sets which FAQ needs to be opened and closed
   const handleFAQClick = (key: number) => {
     const tempFaqState = FAQStateInit;
     tempFaqState[key] = !FaqState[key];
@@ -22,11 +25,40 @@ const Landing: NextPage = () => {
     <Layout>
       <div className="h-full w-full">
         <nav className="top-0 z-50 flex w-full flex-row justify-between bg-transparent bg-opacity-80 py-4 pr-8 backdrop-blur-md">
-          <h1 className="pl-8 font-normal text-text">
-            Academic<span className="text-accent-1">Misconduct</span>
-          </h1>
+          <div className="flex flex-row space-x-4 py-2 pl-8 align-middle">
+            <Link
+              href="/landing"
+              className="mx-auto flex h-fit w-fit items-center justify-center rounded-lg bg-accent-1 fill-background p-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                viewBox="0 96 960 960"
+                width="24"
+              >
+                <path d="M240 976V806q-36-16-65.5-43T124 700.5Q103 665 91.5 623T80 536q0-158 112-259t288-101q176 0 288 101t112 259q0 45-11.5 87T836 700.5Q815 736 785.5 763T720 806v170H240Zm60-60h60v60h60v-60h120v60h60v-60h60V769q37-11 66.5-33t50.5-52.5q21-30.5 32-68.019 11-37.52 11-79.327 0-133.997-94-217.076Q632 236 480.043 236t-246 83.088Q140 402.176 140 536.188 140 578 151 615.5t32 68q21 30.5 50.5 52.5t66.5 33v147Zm120-200h120l-60-120-60 120Zm-79.911-120Q369 596 389.5 575.411q20.5-20.588 20.5-49.5Q410 497 389.411 476.5q-20.588-20.5-49.5-20.5Q311 456 290.5 476.589q-20.5 20.588-20.5 49.5Q270 555 290.589 575.5q20.588 20.5 49.5 20.5Zm280 0Q649 596 669.5 575.411q20.5-20.588 20.5-49.5Q690 497 669.411 476.5q-20.588-20.5-49.5-20.5Q591 456 570.5 476.589q-20.5 20.588-20.5 49.5Q550 555 570.589 575.5q20.588 20.5 49.5 20.5ZM300 916V769q-37-11-66.5-33T183 683.5q-21-30.5-32-68.019-11-37.52-11-79.327 0-133.997 94-217.076Q328 236 479.957 236t246 83.088Q820 402.176 820 536.188 820 578 809 615.5t-32 68Q756 714 726.5 736T660 769v147h-60v-60h-60v60H420v-60h-60v60h-60Z" />
+              </svg>
+            </Link>
+            <h1 className=" font-normal text-text">
+              Academic<span className="text-accent-1">Misconduct</span>
+            </h1>
+          </div>
 
           <div className="hidden flex-row space-x-4 lg:flex">
+            <Link
+              href="/search"
+              className="flex h-16 w-fit flex-row items-center justify-between space-x-4 rounded-xl border-2 fill-accent-1 pl-4 pr-24 text-accent-1 duration-150"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                viewBox="0 96 960 960"
+                width="24"
+              >
+                <path d="M796 935 533 672q-30 26-69.959 40.5T378 727q-108.162 0-183.081-75Q120 577 120 471t75-181q75-75 181.5-75t181 75Q632 365 632 471.15 632 514 618 554q-14 40-42 75l264 262-44 44ZM377 667q81.25 0 138.125-57.5T572 471q0-81-56.875-138.5T377 275q-82.083 0-139.542 57.5Q180 390 180 471t57.458 138.5Q294.917 667 377 667Z" />
+              </svg>
+              <p>Search Here</p>
+            </Link>
             <button className="rounded-2xl bg-accent-1 py-2 px-8 text-secondary hover:border-2 hover:border-accent-1 hover:bg-transparent hover:text-accent-1">
               Sign up
             </button>
@@ -37,7 +69,7 @@ const Landing: NextPage = () => {
         </nav>
         <section className="mx-16 flex h-screen flex-col justify-center">
           <div className="mx-auto">
-            <div className="flex flex-col lg:flex-row">
+            <div className="lg:flex lg:flex-row">
               <div>
                 <p className="z-30 text-lg font-normal text-text lg:px-4 lg:text-2xl">
                   By Students for Students
@@ -54,7 +86,7 @@ const Landing: NextPage = () => {
               </div>
               <Image
                 src={question_pic}
-                className="-z-50 h-full w-full object-cover lg:w-3/6 lg:max-w-lg lg:-translate-y-16"
+                className="-z-50 hidden h-full w-full -translate-y-16 bg-contain object-cover lg:block lg:w-full lg:max-w-4xl lg:-translate-y-28"
                 alt="?"
               />
             </div>
@@ -63,7 +95,7 @@ const Landing: NextPage = () => {
         <section className="mx-16 flex h-screen flex-col justify-center">
           <div className="mx-auto space-y-16 text-center">
             <h1>Our Features</h1>
-            <div className="grid grid-cols-3 grid-rows-2 gap-8">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
               {[...Array(6)].map((e, i) => {
                 return (
                   <button
@@ -162,7 +194,7 @@ const Landing: NextPage = () => {
         </section>
         <section className="mx-16 flex h-screen flex-col justify-center">
           <div className="h-full w-full space-y-16 text-center align-middle">
-            <div className="relative inline-block h-3/5 w-4/5 rounded-2xl bg-accent-1">
+            <div className="relative mx-2 inline-block h-3/5 w-full rounded-2xl bg-accent-1 md:mx-0 md:w-4/5">
               <div className="absolute z-30 flex h-full w-full flex-col justify-center space-y-4 text-background shadow-default">
                 <h1 className="">Join Academic Misconduct Now</h1>
                 <h4 className="pb-8 font-light">
@@ -172,7 +204,6 @@ const Landing: NextPage = () => {
                   <h4> Sign up Now</h4>
                 </button>
               </div>
-
               <Image
                 className="-z-30 h-full w-full rounded-2xl object-cover opacity-20"
                 src={fire_pic}

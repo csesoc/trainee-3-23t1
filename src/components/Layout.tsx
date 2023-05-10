@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 
 interface LayoutProps {
@@ -6,13 +6,14 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
+  const [loggedIn, setLoggedIn] = useState(false);
   return (
-    <main className="flex h-screen w-full flex-row overflow-y-hidden overflow-x-clip">
-      <Sidebar />
-      <section className="w-full overflow-x-clip overflow-y-scroll">
+    <div className="flex h-screen w-full flex-row overflow-y-hidden overflow-x-clip">
+      {loggedIn && <Sidebar />}
+      <main className="w-full overflow-x-clip overflow-y-scroll">
         {children}
-      </section>
-    </main>
+      </main>
+    </div>
   );
 };
 
