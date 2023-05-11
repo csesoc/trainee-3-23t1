@@ -1,0 +1,133 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+body{
+    background-color: #EAEAEA;
+}
+
+h1 {
+    font-size: 36px;
+}
+.details {
+    text-align: left;
+    font-size: 14px;
+}
+
+.button {
+    color:white;
+}
+
+p {
+    font-size: 14px;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+
+
+button {
+    height: 350px;
+    width: 250px;
+    margin: 0 auto;
+    background-color: #FF5252;
+    border-radius: 9999px;
+    border: none;
+}
+
+#box a{
+    color: black;
+    text-decoration: none;
+}
+
+#box a:hover{
+    color:#FF5252;
+}
+#box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .container {
+    margin-top: 100px;
+    width: 480px;
+    height: 500px;
+    border: none;
+    background-color: white;
+    border-radius: 35px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+.container >*{
+    flex:1;
+}
+
+.form-control:focus {
+    outline: none;
+    border-bottom: 2px solid #FF5252;
+}
+
+.form-control {
+    border: none;
+    border-bottom: 1px solid black;
+    height: 30px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+  
+  
+/*
+.box {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .box h1 {
+    font-size: 28px;
+    margin-top: 0;
+  }
+  
+  .box h3 {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  .box a {
+    color: #0066cc;
+    text-decoration: none;
+  }
+  
+  .box button {
+    background-color: #0066cc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .box button:hover {
+    background-color: #004080;
+    cursor: pointer;
+  }
+  
+  .box p {
+    margin-top: 10px;
+    font-size: 14px;
+  }*/
+  
