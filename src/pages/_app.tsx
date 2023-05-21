@@ -3,11 +3,18 @@ import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 
 import "~/styles/globals.css";
+import { api } from "~/utils/api";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
+  const { data } = api.example.hello.useQuery({
+    text: "Test",
+  });
+
+  console.log(data?.greeting);
+
   return (
     <SessionProvider session={session}>
       <Component {...pageProps} />
@@ -15,4 +22,4 @@ const MyApp: AppType<{ session: Session | null }> = ({
   );
 };
 
-export default MyApp;
+export default api.withTRPC(MyApp);
