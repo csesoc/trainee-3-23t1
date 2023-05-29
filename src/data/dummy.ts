@@ -1,5 +1,11 @@
 import { postData } from "~/types/dataTypes";
 
+export const CourseData = [
+  {name: "RIZZ6969", image: "https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=256&h=256&q=80"},
+  {name: "RIZZ6969", image: "https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=256&h=256&q=80"}
+]
+
+
 export const allPostData: postData[] = [
   {
     author: "eoin",
