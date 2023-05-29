@@ -33,7 +33,7 @@ const SearchBar = () => {
   </form>
   {/* Results thing beneath the search bar.. How to implement */}
   <div className="flex justify-between pt-5 pb-5 ">
-  <p>Results for '{search}'</p>
+  <p>Results for &apos;{search}&apos;</p>
   <p>{numResult} Results</p>
   </div>
   </div>
