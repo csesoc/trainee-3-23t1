@@ -2,13 +2,13 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-body{
+body {
     background-color: #EAEAEA;
 }
 
-h1 {
+/* h1 {
     font-size: 36px;
-}
+} */
 .details {
     text-align: left;
     font-size: 14px;
@@ -28,7 +28,7 @@ label {
   }
 
 
-button {
+.loginbutton {
     height: 350px;
     width: 250px;
     margin: 0 auto;

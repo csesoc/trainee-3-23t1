@@ -3,7 +3,7 @@ import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 
 import "~/styles/globals.css";
-import "~/styles/login.css";
+// import "~/styles/login.css";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
