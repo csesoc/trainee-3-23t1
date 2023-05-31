@@ -1,13 +1,23 @@
+import { signIn } from "next-auth/react";
 import Link from "next/link";
+import { useCallback, useMemo, useState } from "react";
 const Login = () => {
-  const handleFormSubmit = (event: React.SyntheticEvent) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  // eslint-disable-next-line
+  const handleUsernameChange = useCallback((event: React.SyntheticEvent) => setUsername((event.target as HTMLInputElement).value), [username]);
+  // eslint-disable-next-line
+  const handlePasswordChange = useCallback((event: React.SyntheticEvent) => setPassword((event.target as HTMLInputElement).value), [password]);
+
+  const readyToSubmit = useMemo(() => username && password, [username, password]);
+
+  const handleFormSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
-    const target = event.target as typeof event.target & {
-      username: { value: string };
-      password: { value: string };
-    };
-    console.log(target.username.value, target.password.value);
+    const target = event.target as HTMLFormElement;
+    const [name, password] = ["username", "password"].map((key: string) => target[key].value);
     // make and api call here to submit the details
+    await signIn("credentials", { name, password, callbackUrl: '/home' });
   };
 
   return (
@@ -22,6 +32,8 @@ const Login = () => {
           type="text"
           id="username"
           name="username"
+          value={username}
+          onChange={handleUsernameChange}
           className="w-full outline-none h-fit text-sm border border-transparent border-b-black hover:border-b-accent-1"
         />
         </div>
@@ -33,18 +45,20 @@ const Login = () => {
           type="text"
           id="password"
           name="password"
+          value={password}
+          onChange={handlePasswordChange}
           className="w-full outline-none h-fit text-sm border border-transparent border-b-black hover:border-b-accent-1"
         />
         </div>
         <p className="details">
           <a href="#">Forgot password?</a>
         </p>
-        <button type="submit" className="bg-accent-1 rounded-md py-2 w-full text-white font-bold">
+        <button type="submit" className="bg-accent-1 rounded-md py-2 w-full text-white font-bold disabled:opacity-70" disabled={!readyToSubmit}>
           Login
         </button>
         <br />
         <p>
-          Not a member? <Link href="/signup" className="text-accent-1">Sign Up</Link>
+          Not a member? <Link href="/auth/signup" className="text-accent-1">Sign Up</Link>
         </p>
       </form>
     </section>

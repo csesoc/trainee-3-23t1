@@ -1,13 +1,39 @@
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { FormEvent, useCallback, useMemo, useState } from "react";
+import { api } from "~/utils/api";
+import validator from "validator";
+
 const SignUp = () => {
-  const handleFormSubmit = (event: React.SyntheticEvent) => {
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  // eslint-disable-next-line
+  const handleUsernameChange = useCallback((event: React.SyntheticEvent) => setUsername((event.target as HTMLInputElement).value), [username]);
+  // eslint-disable-next-line
+  const handleEmailChange = useCallback((event: React.SyntheticEvent) => setEmail((event.target as HTMLInputElement).value), [email]);
+  // eslint-disable-next-line
+  const handlePasswordChange = useCallback((event: React.SyntheticEvent) => setPassword((event.target as HTMLInputElement).value), [password]);
+  // eslint-disable-next-line
+  const handleConfirmPasswordChange = useCallback((event: React.SyntheticEvent) => setConfirmPassword((event.target as HTMLInputElement).value), [confirmPassword]);
+
+
+
+  const { push } = useRouter();
+  const mutation = api.user.create.useMutation();
+  const readyToSubmit = useMemo(()=>validator.isEmail(email)&&username&&password&&confirmPassword&&(password==confirmPassword), [email, username, password, confirmPassword])
+  const handleFormSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    const target = event.target as typeof event.target & {
-      username: { value: string };
-      password: { value: string };
-    };
-    console.log(target.username.value, target.password.value);
+    const target = event.target as HTMLFormElement;
+    const [email, name, password, confirmPassword] = ["email", "username", "password", "confirmpassword"].map((key: string) => target[key].value);
     // make and api call here to submit the details
+    await mutation.mutate({email, name, password});
+    if (!mutation.error) {
+      push('/home')
+    }
   };
   return (
     <section className="bg-background w-full max-w-lg flex flex-col m-auto h-screen items-center justify-center">
@@ -18,9 +44,12 @@ const SignUp = () => {
           Email
         </label>
         <input 
-          type="text" 
+          type="text"
+          value={email}
+          onChange={handleEmailChange}
           id="email" 
-          name="email" 
+          name="email"
+
           className="w-full outline-none h-fit text-sm border border-transparent border-b-black hover:border-b-accent-1" 
           />
         </div>
@@ -30,6 +59,8 @@ const SignUp = () => {
         </label>
         <input
           type="text"
+          value={username}
+          onChange={handleUsernameChange}
           id="username"
           name="username"
           className="w-full outline-none h-fit text-sm border border-transparent border-b-black hover:border-b-accent-1"
@@ -40,7 +71,9 @@ const SignUp = () => {
           Password
         </label>
         <input
-          type="text"
+          type="password"
+          value={password}
+          onChange={handlePasswordChange}
           id="password"
           name="password"
           className="w-full outline-none h-fit text-sm border border-transparent border-b-black hover:border-b-accent-1"
@@ -51,13 +84,15 @@ const SignUp = () => {
           Confirm Password
         </label>
         <input
-          type="text"
+          type="password"
+          value={confirmPassword}
+          onChange={handleConfirmPasswordChange}
           id="confirmpassword"
           name="confirmpassword"
           className="w-full outline-none h-fit text-sm border border-transparent border-b-black hover:border-b-accent-1"
         />
         </div>
-        <button type="submit" className="bg-accent-1 rounded-md py-2 w-full text-white font-bold">
+        <button type="submit" className="bg-accent-1 rounded-md py-2 w-full text-white font-bold disabled:opacity-70" disabled={!readyToSubmit}>
           Sign up
         </button>
         <br />
