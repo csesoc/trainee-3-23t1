@@ -1,4 +1,5 @@
 import { type NextPage } from "next";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import Layout from "~/components/Layout";
 const Search: NextPage = () => {
@@ -108,10 +109,12 @@ const ReturnSearchList = () => {
           key={index}
           className="bg-gray-200 border-white bg-white/40 flex w-full gap-4 rounded-[10px] p-4 shadow-default"
         >
-          <img
+          <Image
+            width={80}
+            height={80}
             src={course.icon}
             alt="Course Icon"
-            className="h-[80px] w-[80px] self-center rounded-[10px] object-cover"
+            className="self-center rounded-lg object-cover"
           />
           <div>
             <h5 className="truncate">{course.name}</h5>
@@ -129,18 +132,22 @@ const FilterSection = () => {
       <h3 className="text-sm">FILTER</h3>
       <div className="flex flex-col">
         <button className="text-white bg-white/40 mt-[10px] flex h-[56px] w-full flex-col rounded-[10px] border px-4 py-2 font-bold shadow-default hover:border-accent-1 hover:text-accent-1 xl:flex-row xl:items-center">
-          <img
+          <Image
+            width={16}
+            height={16}
             src="https://img.uxwing.com/wp-content/themes/uxwing/download/editing-user-action/read-book-icon.png"
             alt="Course Icon"
-            className="mr-2 h-4 w-4"
+            className="mr-2"
           />
           <span>Courses</span>
         </button>
         <button className="text-white bg-white/40 mt-[10px] flex h-[56px] w-full flex-col rounded-[10px] border px-4 py-2 font-bold shadow-default hover:border-accent-1 hover:text-accent-1 xl:flex-row xl:items-center">
-          <img
+          <Image
+            width={16}
+            height={16}
             src="https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
             alt="User Icon"
-            className="mr-2 h-4 w-4"
+            className="mr-2"
           />
           <span>Users</span>
         </button>
