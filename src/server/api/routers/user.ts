@@ -7,6 +7,7 @@ import {
   protectedProcedure,
   publicProcedure,
 } from "~/server/api/trpc";
+import { CreateHandleStr } from "../functions/createHandleStr";
 
 export const userRouter = createTRPCRouter({
   // searches using query and returns users

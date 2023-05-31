@@ -9,12 +9,6 @@ const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
-  const { data } = api.example.hello.useQuery({
-    text: "Test",
-  });
-
-  console.log(data?.greeting);
-
   return (
     <SessionProvider session={session}>
       <Component {...pageProps} />

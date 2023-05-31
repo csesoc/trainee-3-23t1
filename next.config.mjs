@@ -8,7 +8,12 @@
 const config = {
   reactStrictMode: true,
   images: {
-    domains: ["jinxrmyuapfqrhyrmxgq.supabase.in"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
   },
 
   /**
