@@ -3,7 +3,11 @@ import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { CleanUserType, MinimalCleanUserType } from "~/components/types/user";
 
-import { createTRPCRouter, protectedProcedure } from "~/server/api/trpc";
+import {
+  createTRPCRouter,
+  protectedProcedure,
+  publicProcedure,
+} from "~/server/api/trpc";
 
 export const courseRouter = createTRPCRouter({
   // searches using query and returns courses
