@@ -116,4 +116,27 @@ export const postsRouter = createTRPCRouter({
 
       return { posts: cleanData };
     }),
+  getLatestPosts: publicProcedure.query(async ({ ctx }) => {
+    const posts = await ctx.prisma.post.findMany({
+      take: 20,
+      orderBy: {
+        timePosted: "desc",
+      },
+    });
+    const cleanData: CleanPostType[] = [];
+    posts.forEach(async (post) => {
+      // assumes course exists
+      const course = await ctx.prisma.course.findFirst({
+        where: {
+          id: post.courseId,
+        },
+      });
+      cleanData.push({
+        title: post.title,
+        content: post.content,
+        courseCode: course!.code,
+      });
+    });
+    return { posts: cleanData };
+  }),
 });
