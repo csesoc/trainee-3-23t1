@@ -69,6 +69,7 @@ model Course {
     id      String @id @default(cuid())
     code    String @unique
     name    String
+    icon    String @default("https://www.unsw.edu.au/etc.clientlibs/unsw-common/clientlibs/unsw-assets/resources/social/UNSWlogo-opengraph-squaresafe.png")
     Posts   Post[]
     Members User[]
 }

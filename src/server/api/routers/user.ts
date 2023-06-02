@@ -11,7 +11,7 @@ import { CreateHandleStr } from "../functions/createHandleStr";
 
 export const userRouter = createTRPCRouter({
   // searches using query and returns users
-  search: protectedProcedure
+  search: publicProcedure
     .input(z.object({ query: z.string() }))
     .query(async ({ input, ctx }) => {
       // get all matching users
@@ -39,7 +39,7 @@ export const userRouter = createTRPCRouter({
       return { users: cleanData };
     }),
   // returns every user found
-  getAll: protectedProcedure.query(async ({ ctx }) => {
+  getAll: publicProcedure.query(async ({ ctx }) => {
     const users: User[] = await ctx.prisma.user.findMany();
     // clean data to remove sensitive information
     const cleanData: CleanUserType[] = [];

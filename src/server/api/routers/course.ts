@@ -3,15 +3,12 @@ import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { CleanUserType, MinimalCleanUserType } from "~/components/types/user";
 
-import {
-  createTRPCRouter,
-  protectedProcedure,
-  publicProcedure,
-} from "~/server/api/trpc";
+import { createTRPCRouter, protectedProcedure, publicProcedure } from "~/server/api/trpc";
+
 
 export const courseRouter = createTRPCRouter({
   // searches using query and returns courses
-  search: protectedProcedure
+  search: publicProcedure
     .input(z.object({ query: z.string() }))
     .query(async ({ input, ctx }) => {
       const courses: Course[] = await ctx.prisma.course.findMany({
@@ -25,7 +22,8 @@ export const courseRouter = createTRPCRouter({
       return { courses };
     }),
   // returns every course found
-  getAllCourses: protectedProcedure.query(async ({ ctx }) => {
+  getAllCourses: publicProcedure
+  .query(async ({ ctx }) => {
     const courses: Course[] = await ctx.prisma.course.findMany();
     return { courses };
   }),
