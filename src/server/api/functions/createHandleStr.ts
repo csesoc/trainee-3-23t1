@@ -1,4 +1,4 @@
-const CreateHandleStr = (name: string) => {
+export const CreateHandleStr = (name: string) => {
   name = name.toLowerCase();
   name = name.replace(" ", "_");
   // generates a random number between 1000 and 9999

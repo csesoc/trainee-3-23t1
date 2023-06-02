@@ -1,8 +1,8 @@
 import { NextPage, NextComponentType } from "next";
-import Layout from "~/components/Layout"
-import RocketLaunchIcon from "@heroicons/react/24/solid/RocketLaunchIcon"
-import FireIcon from "@heroicons/react/24/solid/FireIcon"
-import ArrowLongRightIcon from "@heroicons/react/24/solid/ArrowLongRightIcon"
+import Layout from "~/components/Layout";
+import RocketLaunchIcon from "@heroicons/react/24/solid/RocketLaunchIcon";
+import FireIcon from "@heroicons/react/24/solid/FireIcon";
+import ArrowLongRightIcon from "@heroicons/react/24/solid/ArrowLongRightIcon";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { allPostData } from "~/data/dummy";
@@ -26,22 +26,27 @@ const Home: NextPage = () => {
     // setAllPosts(newPostData);
   }, [query]);
 
-
   return (
     <Layout>
-      <div className="flex flex-row">
+      <div className="flex flex-row gap-x-10 bg-secondary">
         {/* Middle Content */}
-        <div className="w-3/5 px-8 py-12 h-screen overflow-y-scroll">
+        <div className="ml-0 h-screen w-full overflow-y-scroll bg-background px-8 py-12 lg:ml-10 lg:w-3/5">
           {/* Search + Notif */}
-          <div className="flex flex-row w-full space-x-4">
+          <div className="flex w-full flex-row space-x-4">
             <SearchBar onChange={(value) => setQuery(value)} />
             <Notifications />
           </div>
 
           {/* Tab Group */}
-          <div className="mt-8 flex flex-row space-x-4">
-            <ForYouTab selected={forYouSelected} onChange={(res: boolean) => setForYouSelected(res)} />
-            <TopTab selected={!forYouSelected} onChange={(res: boolean) => setForYouSelected(res)} />
+          <div className="mt-8 flex flex-wrap gap-4 text-background">
+            <ForYouTab
+              selected={forYouSelected}
+              onChange={(res: boolean) => setForYouSelected(res)}
+            />
+            <TopTab
+              selected={!forYouSelected}
+              onChange={(res: boolean) => setForYouSelected(res)}
+            />
           </div>
 
           {/* Posts Section -> Maybe an array of posts or smth idk */}
@@ -49,25 +54,31 @@ const Home: NextPage = () => {
         </div>
 
         {/* Right Bar */}
-        <div className="h-screen w-2/5 px-8 py-12">
+        <div className="hidden w-2/5 bg-background px-8 py-12 lg:block">
           {/* Header Courses Watched*/}
           <div>
-            <div className="flex flex-row justify-between">
+            <div className="flex flex-wrap justify-between gap-2">
               <h4>Courses Watched</h4>
-              <Link href="" className="text-accent-1 flex flex-row space-x-1">
+              <Link
+                href=""
+                className="flex cursor-pointer flex-row space-x-1 text-accent-1 hover:underline focus:underline"
+              >
                 <p className="text-color-accent-1">More</p>
                 <ArrowLongRightIcon className="h-6 w-6" />
               </Link>
             </div>
 
-            <AllCourses/>
+            <AllCourses />
           </div>
-          <div className="h-0.5 my-12 w-full bg-secondary"></div>
+          <div className="my-12 h-0.5 w-full bg-secondary"></div>
           <div>
             {/* Header Recommended */}
-            <div className="flex flex-row justify-between mt-12">
-              <h4>Recommended users</h4>
-              <Link href="" className="text-accent-1 flex flex-row space-x-1">
+            <div className="mt-12 flex flex-wrap justify-between gap-2">
+              <h4 className="break-all">Recommended users</h4>
+              <Link
+                href=""
+                className="flex cursor-pointer flex-row space-x-1 text-accent-1 hover:underline focus:underline"
+              >
                 <p className="text-color-accent-1">More</p>
                 <ArrowLongRightIcon className="h-6 w-6" />
               </Link>
@@ -75,37 +86,54 @@ const Home: NextPage = () => {
 
             <UsersList />
           </div>
-
         </div>
       </div>
     </Layout>
   );
 };
 
-const ForYouTab = ({ selected, onChange }: { selected: boolean, onChange: CallableFunction }) => {
+const ForYouTab = ({
+  selected,
+  onChange,
+}: {
+  selected: boolean;
+  onChange: CallableFunction;
+}) => {
   return (
-    <button onClick={() => onChange(true)} className={`rounded-full h-10 w-36 flex flex-row space-x-2 justify-center py-2 ${selected ? "text-white bg-accent-1" : "text-text/50 bg-white"}`}>
+    <button
+      onClick={() => onChange(true)}
+      className={`flex justify-center space-x-2 rounded-full px-6 py-2 ${
+        selected ? "text-white bg-accent-1" : "bg-white text-text/50"
+      }`}
+    >
       <RocketLaunchIcon className="h-6 w-6" />
       <p>For you</p>
     </button>
-  )
-}
+  );
+};
 
-const TopTab = ({ selected, onChange }: { selected: boolean, onChange: CallableFunction }) => {
+const TopTab = ({
+  selected,
+  onChange,
+}: {
+  selected: boolean;
+  onChange: CallableFunction;
+}) => {
   return (
-    <button onClick={() => onChange(false)} className={`rounded-full h-10 w-36 flex flex-row space-x-2 justify-center py-2 ${selected ? "text-white bg-accent-1" : "text-text/50 bg-white"}`}>
+    <button
+      onClick={() => onChange(false)}
+      className={`flex h-10 w-36 flex-row justify-center space-x-2 rounded-full py-2 ${
+        selected ? "text-white bg-accent-1" : "bg-white text-text/50"
+      }`}
+    >
       <FireIcon className="h-6 w-6" />
       <p>Top</p>
     </button>
-  )
-}
+  );
+};
 
 const UsersList = () => {
-  return (
-    <div className="h-full">
-UserList Lmao
-    </div>
-  )
-}
+  return <div className="h-full">UserList Lmao</div>;
+};
 
 export default Home;

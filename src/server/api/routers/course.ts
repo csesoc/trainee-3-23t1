@@ -5,6 +5,7 @@ import { CleanUserType, MinimalCleanUserType } from "~/components/types/user";
 
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "~/server/api/trpc";
 
+
 export const courseRouter = createTRPCRouter({
   // searches using query and returns courses
   search: publicProcedure
