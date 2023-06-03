@@ -10,11 +10,11 @@ const FilterSection: React.FC<FilterSectionProps> = ({
   setSelectedFilter,
 }) => {
   return (
-    <div className="h-screen w-[355px] bg-background pl-10 pt-10">
+    <div className="hidden h-screen w-[355px] bg-background pl-10 pt-10 md:block">
       <h3 className="text-sm">FILTER</h3>
       <div className="flex flex-col">
         <button
-          className={`text-white bg-white/40 mt-[10px] flex h-[56px] w-[258px] items-center rounded-[10px] border px-4 py-2 font-bold shadow-default hover:border-accent-1 ${
+          className={`mt-[10px] flex h-[56px] w-[258px] items-center rounded-[10px] border bg-white/40 px-4 py-2 font-bold text-black shadow-default hover:border-accent-1 focus:bg-accent-1 ${
             selectedFilter === "courses" ? "bg-accent-1" : ""
           }`}
           onClick={() => setSelectedFilter("courses")}
@@ -27,7 +27,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
           <span>Courses</span>
         </button>
         <button
-          className={`text-white bg-white/40 mt-[10px] flex h-[56px] w-[258px] items-center rounded-[10px] border px-4 py-2 font-bold shadow-default hover:border-accent-1 ${
+          className={`mt-[10px] flex h-[56px] w-[258px] items-center rounded-[10px] border bg-white/40 px-4 py-2 font-bold text-black shadow-default hover:border-accent-1 focus:bg-accent-1 ${
             selectedFilter === "users" ? "bg-accent-1" : ""
           }`}
           onClick={() => setSelectedFilter("users")}

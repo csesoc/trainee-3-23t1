@@ -6,59 +6,83 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   // eslint-disable-next-line
-  const handleUsernameChange = useCallback((event: React.SyntheticEvent) => setUsername((event.target as HTMLInputElement).value), [username]);
+  const handleUsernameChange = useCallback(
+    (event: React.SyntheticEvent) =>
+      setUsername((event.target as HTMLInputElement).value),
+    [username]
+  );
   // eslint-disable-next-line
-  const handlePasswordChange = useCallback((event: React.SyntheticEvent) => setPassword((event.target as HTMLInputElement).value), [password]);
+  const handlePasswordChange = useCallback(
+    (event: React.SyntheticEvent) =>
+      setPassword((event.target as HTMLInputElement).value),
+    [password]
+  );
 
-  const readyToSubmit = useMemo(() => username && password, [username, password]);
+  const readyToSubmit = useMemo(
+    () => username && password,
+    [username, password]
+  );
 
   const handleFormSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
     const target = event.target as HTMLFormElement;
-    const [name, password] = ["username", "password"].map((key: string) => target[key].value);
+    const [name, password] = ["username", "password"].map(
+      (key: string) => target[key].value
+    );
     // make and api call here to submit the details
-    await signIn("credentials", { name, password, callbackUrl: '/home' });
+    await signIn("credentials", { name, password, callbackUrl: "/" });
   };
 
   return (
-    <section className="bg-background w-full max-w-lg flex flex-col m-auto h-screen items-center justify-center">
-      <form id="login-form" className="space-y-10 px-20 py-16 w-full bg-white rounded-xl drop-shadow-md flex flex-col justify-center text-center" onSubmit={handleFormSubmit}>
+    <section className="m-auto flex h-screen w-full max-w-lg flex-col items-center justify-center bg-background">
+      <form
+        id="login-form"
+        className="flex w-full flex-col justify-center space-y-10 rounded-xl bg-white px-20 py-16 text-center drop-shadow-md"
+        onSubmit={handleFormSubmit}
+      >
         <h1>Login</h1>
         <div>
-        <label htmlFor="username" className="text-left text-sm block">
-          Username
-        </label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          value={username}
-          onChange={handleUsernameChange}
-          className="w-full outline-none h-fit text-sm border border-transparent border-b-black hover:border-b-accent-1"
-        />
+          <label htmlFor="username" className="block text-left text-sm">
+            Username
+          </label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            value={username}
+            onChange={handleUsernameChange}
+            className="h-fit w-full border border-transparent border-b-black text-sm outline-none hover:border-b-accent-1"
+          />
         </div>
         <div>
-        <label htmlFor="password" className="text-left text-sm block">
-          Password
-        </label>
-        <input
-          type="text"
-          id="password"
-          name="password"
-          value={password}
-          onChange={handlePasswordChange}
-          className="w-full outline-none h-fit text-sm border border-transparent border-b-black hover:border-b-accent-1"
-        />
+          <label htmlFor="password" className="block text-left text-sm">
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={password}
+            onChange={handlePasswordChange}
+            className="h-fit w-full border border-transparent border-b-black text-sm outline-none hover:border-b-accent-1"
+          />
         </div>
         <p className="details">
           <a href="#">Forgot password?</a>
         </p>
-        <button type="submit" className="bg-accent-1 rounded-md py-2 w-full text-white font-bold disabled:opacity-70" disabled={!readyToSubmit}>
+        <button
+          type="submit"
+          className="w-full rounded-md bg-accent-1 py-2 font-bold text-white disabled:opacity-70"
+          disabled={!readyToSubmit}
+        >
           Login
         </button>
         <br />
         <p>
-          Not a member? <Link href="/auth/signup" className="text-accent-1">Sign Up</Link>
+          Not a member?{" "}
+          <Link href="/auth/signup" className="text-accent-1">
+            Sign Up
+          </Link>
         </p>
       </form>
     </section>

@@ -1,6 +1,6 @@
-import { Course, User } from "@prisma/client";
+import { User } from "@prisma/client";
 import { z } from "zod";
-import { CleanUserType, MinimalCleanUserType } from "~/components/types/user";
+import { CleanUserType, MinimalCleanUserType } from "~/types/user";
 
 import {
   createTRPCRouter,

@@ -1,15 +1,22 @@
-"use client";
-
 import { type NextPage } from "next";
-import { useRouter } from "next/router";
-import Layout from "~/components/Layout";
+import { useSession } from "next-auth/react";
+import { ReactNode, useEffect, useState } from "react";
+import HomePage from "~/components/Pages/HomePage";
+import Landing from "~/components/Pages/LandingPage";
+
 const Home: NextPage = () => {
-  const path = useRouter().route;
-  return (
-    <Layout>
-      <h1>Home</h1>
-    </Layout>
-  );
+  const [component, setComponent] = useState<ReactNode>();
+  const { status } = useSession();
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      setComponent(<HomePage />);
+    } else if (status === "unauthenticated") {
+      setComponent(<Landing />);
+    }
+  }, [status]);
+
+  return <>{component}</>;
 };
 
 export default Home;
