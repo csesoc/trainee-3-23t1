@@ -1,12 +1,13 @@
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
-import { CleanPostType, CleanPublicPostType } from "~/components/types/post";
+// import { CleanPostType, CleanPublicPostType } from "~/components/types/post";
 
 import {
   createTRPCRouter,
   publicProcedure,
   protectedProcedure,
 } from "~/server/api/trpc";
+import { CleanPostType, CleanPublicPostType } from "~/types/post";
 
 export const postsRouter = createTRPCRouter({
   // creates a new post and returns the post id
@@ -117,26 +118,29 @@ export const postsRouter = createTRPCRouter({
       return { posts: cleanData };
     }),
   getLatestPosts: publicProcedure.query(async ({ ctx }) => {
-    const posts = await ctx.prisma.post.findMany({
-      take: 20,
-      orderBy: {
-        timePosted: "desc",
-      },
-    });
+    const posts = await ctx.prisma.post.findMany();
+    console.log("p",posts)
     const cleanData: CleanPostType[] = [];
-    posts.forEach(async (post) => {
-      // assumes course exists
-      const course = await ctx.prisma.course.findFirst({
-        where: {
-          id: post.courseId,
-        },
+    await new Promise (async(resolve, reject) => {
+      
+      posts.forEach(async (post, index) => {
+        // assumes course exists
+         const course = await ctx.prisma.course.findFirst({
+          where: {
+            id: post.courseId,
+          },
+        });
+
+        cleanData.push({
+          title: post.title,
+          content: post.content,
+          courseCode: course!.code,
+        });
+        if (index === posts.length - 1) {
+          resolve(true);
+        }
       });
-      cleanData.push({
-        title: post.title,
-        content: post.content,
-        courseCode: course!.code,
-      });
-    });
+    })
     return { posts: cleanData };
   }),
 });
