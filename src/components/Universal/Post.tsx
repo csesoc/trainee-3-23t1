@@ -1,7 +1,7 @@
 import { postData } from "~/types/dataTypes";
 import TruncatedDescription from "../TruncatedDescription";
 
-const Post = ({ post }: { post: postData }) => {
+const Post = ({ post }: { post: any }) => {
   return (
     <div className="flex w-full flex-col space-y-3 rounded-3xl border border-background bg-background/40 px-7 py-8 shadow-default">
       {/* Avatar Group */}
