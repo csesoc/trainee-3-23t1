@@ -34,11 +34,6 @@ const Search: NextPage = () => {
                 setSearchQuery(res);
               }}
             />
-            {/* Results thing beneath the search bar.. How to implement */}
-            <div className="flex justify-between pb-5 pt-5 ">
-              <p>Results for &apos;{searchQuery}&apos;</p>
-              <p>{numResult} Results</p>
-            </div>
           </div>
           {selectedFilter === "courses" ? (
             <SearchResultsCourse query={searchQuery} />

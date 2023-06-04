@@ -41,7 +41,6 @@ const SearchBar = ({ onSubmit }: { onSubmit: FunctionStringCallback }) => {
             id="query"
             className="w-full outline-none"
             placeholder="Search for courses or users..."
-            required
           />
           <button type="submit" className="">
             Search
