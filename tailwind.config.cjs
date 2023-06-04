@@ -14,10 +14,6 @@ const config = {
     fontFamily: {
       poppins: ["Poppins", "sans-serif"],
     },
-    boxShadow: {
-      default: "2px 4px 32px rgba(155, 49, 49, 0.1)",
-      "default-solid": "8px 8px 0px #FF5252",
-    },
     extend: {
       colors: {
         background: "#FFFFFF",
@@ -27,6 +23,10 @@ const config = {
         secondary: "#EAEAEA",
         text: "#121212",
         transparent: "hsl(0, 0%, 0%, 0.0)",
+      },
+      boxShadow: {
+        default: "2px 4px 32px rgba(155, 49, 49, 0.1)",
+        "default-solid": "8px 8px 0px #FF5252",
       },
     },
   },

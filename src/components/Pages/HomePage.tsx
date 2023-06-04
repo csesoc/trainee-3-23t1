@@ -11,7 +11,7 @@ import SearchBar from "~/components/Universal/SearchBar";
 import AllCourses from "~/components/Home/AllCourses";
 import Notifications from "~/components/Home/Notifications";
 
-const Home: NextPage = () => {
+const HomePage: NextPage = () => {
   // do logic here
   const [query, setQuery] = useState("");
   // do something with query
@@ -30,7 +30,7 @@ const Home: NextPage = () => {
     <Layout>
       <div className="flex flex-row gap-x-10 bg-secondary">
         {/* Middle Content */}
-        <div className="ml-0 h-screen w-full overflow-y-scroll bg-background px-8 py-12 lg:ml-10 lg:w-3/5">
+        <div className="ml-0 h-screen w-full bg-background px-8 py-12 lg:ml-10 lg:w-3/5 lg:overflow-y-scroll">
           {/* Search + Notif */}
           <div className="flex w-full flex-row space-x-4">
             <SearchBar onChange={(value) => setQuery(value)} />
@@ -103,7 +103,7 @@ const ForYouTab = ({
     <button
       onClick={() => onChange(true)}
       className={`flex justify-center space-x-2 rounded-full px-6 py-2 ${
-        selected ? "text-white bg-accent-1" : "bg-white text-text/50"
+        selected ? "bg-accent-1 text-white" : "bg-white text-text/50"
       }`}
     >
       <RocketLaunchIcon className="h-6 w-6" />
@@ -123,7 +123,7 @@ const TopTab = ({
     <button
       onClick={() => onChange(false)}
       className={`flex h-10 w-36 flex-row justify-center space-x-2 rounded-full py-2 ${
-        selected ? "text-white bg-accent-1" : "bg-white text-text/50"
+        selected ? "bg-accent-1 text-white" : "bg-white text-text/50"
       }`}
     >
       <FireIcon className="h-6 w-6" />
@@ -136,4 +136,4 @@ const UsersList = () => {
   return <div className="h-full">UserList Lmao</div>;
 };
 
-export default Home;
+export default HomePage;

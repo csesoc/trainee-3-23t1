@@ -1,7 +1,7 @@
 import { Course } from "@prisma/client";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
-import { CleanUserType, MinimalCleanUserType } from "~/components/types/user";
+import { MinimalCleanUserType } from "~/types/user";
 
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "~/server/api/trpc";
 
